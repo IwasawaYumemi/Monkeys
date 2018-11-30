@@ -11,7 +11,6 @@ import AVFoundation
 import FirebaseMLVision
 
 class ViewController: UIViewController {
-    private let smilingThreshold: CGFloat = 0.95
     private let cryingEyeThreshold: CGFloat = 0.1
 
     private lazy var captureSession: AVCaptureSession = {
@@ -142,30 +141,22 @@ class ViewController: UIViewController {
             }
 
             for face in faces {
-                self?.inspectFacialExpression(face: face)
+                self?.isBabyCrying(face: face)
             }
         }
     }
     
-    private func inspectFacialExpression(face: VisionFace) {
-        // TODO なく表情を定義
+    private func isBabyCrying(face: VisionFace) {
         if face.hasRightEyeOpenProbability && face.hasLeftEyeOpenProbability {
             let rightEyeOpenProb = face.rightEyeOpenProbability
             let leftEyeOpenProb = face.leftEyeOpenProbability
             
-            if (rightEyeOpenProb < cryingEyeThreshold || leftEyeOpenProb < cryingEyeThreshold) {
-                
-            }
-        }
-        
-        if face.hasSmilingProbability {
-            let smileProb = face.smilingProbability
-            if smileProb > smilingThreshold {
+            if (rightEyeOpenProb < cryingEyeThreshold && leftEyeOpenProb < cryingEyeThreshold) {
                 amuse()
             }
         }
     }
-    
+
     private func amuse() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let amuseViewController = storyboard.instantiateViewController(withIdentifier: "AmuseViewController") as? AmuseViewController else { return }
