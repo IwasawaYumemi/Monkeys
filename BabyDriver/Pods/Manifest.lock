@@ -87,11 +87,13 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.1)
+  - youtube-ios-player-helper (0.1.4)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/MLVision
   - Firebase/MLVisionFaceModel
+  - youtube-ios-player-helper (= 0.1.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -110,6 +112,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - Protobuf
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Firebase: 383fa29aca93e371cab776b48a5c66544d3c2003
@@ -127,7 +130,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  youtube-ios-player-helper: 84b1485ebb4b7c6b619c6e05edcb55186723a7c6
 
-PODFILE CHECKSUM: 061d1a6e8e8137d4b42b4fa428128f2c23aad307
+PODFILE CHECKSUM: 271b67a779b09dbfb444f7a67f84a1dfac0edda6
 
 COCOAPODS: 1.5.3

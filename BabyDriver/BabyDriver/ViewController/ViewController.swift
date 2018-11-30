@@ -11,6 +11,9 @@ import AVFoundation
 import FirebaseMLVision
 
 class ViewController: UIViewController {
+    private let smilingThreshold: CGFloat = 0.95
+    private let cryingEyeThreshold: CGFloat = 0.1
+
     private lazy var captureSession: AVCaptureSession = {
         let session = AVCaptureSession()
         session.sessionPreset = AVCaptureSession.Preset.low
@@ -133,50 +136,44 @@ class ViewController: UIViewController {
         options.classificationType = .all
 
         let faceDetector = vision.faceDetector(options: options)
-        faceDetector.detect(in: image) { (faces, error) in
+        faceDetector.detect(in: image) { [weak self] (faces, error) in
             guard error == nil, let faces = faces, !faces.isEmpty else {
                 return
             }
 
             for face in faces {
-                let frame = face.frame
-//                if face.hasHeadEulerAngleY {
-//                    let rotY = face.headEulerAngleY  // Head is rotated to the right rotY degrees
-//                }
-//
-//                if face.hasHeadEulerAngleZ {
-//                    let rotZ = face.headEulerAngleZ  // Head is rotated upward rotZ degrees
-//                }
-//
-//                // If landmark detection was enabled (mouth, ears, eyes, cheeks, and
-//                // nose available):
-//                if let leftEye = face.landmark(ofType: .leftEye) {
-//                    let leftEyePosition = leftEye.position
-//                }
-
-                // If classification was enabled:
-                if face.hasSmilingProbability {
-                    let smileProb = face.smilingProbability
-                    print("笑ってるだろ　\(smileProb)")
-                } else {
-                    print("笑えよ")
-
-                }
-//                if face.hasRightEyeOpenProbability {
-//                    let rightEyeOpenProb = face.rightEyeOpenProbability
-//                }
-//
-//                // If face tracking was enabled:
-//                if face.hasTrackingID {
-//                    let trackingId = face.trackingID
-//                }
-
+                self?.inspectFacialExpression(face: face)
             }
-
-
         }
     }
     
+    private func inspectFacialExpression(face: VisionFace) {
+        // TODO なく表情を定義
+        if face.hasRightEyeOpenProbability && face.hasLeftEyeOpenProbability {
+            let rightEyeOpenProb = face.rightEyeOpenProbability
+            let leftEyeOpenProb = face.leftEyeOpenProbability
+            
+            if (rightEyeOpenProb < cryingEyeThreshold || leftEyeOpenProb < cryingEyeThreshold) {
+                
+            }
+        }
+        
+        if face.hasSmilingProbability {
+            let smileProb = face.smilingProbability
+            if smileProb > smilingThreshold {
+                amuse()
+            }
+        }
+    }
+    
+    private func amuse() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let amuseViewController = storyboard.instantiateViewController(withIdentifier: "AmuseViewController") as? AmuseViewController else { return }
+        
+        
+        stopSession()
+        present(amuseViewController, animated: true, completion: nil)
+    }
 }
 
 // MARK: AVCaptureVideoDataOutputSampleBufferDelegate
@@ -209,3 +206,5 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 
     }
 }
+
+
