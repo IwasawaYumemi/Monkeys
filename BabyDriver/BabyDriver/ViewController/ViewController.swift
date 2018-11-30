@@ -10,7 +10,8 @@ import UIKit
 import AVFoundation
 import FirebaseMLVision
 
-class ViewController: UIViewController {
+class ViewController: UIViewController {    
+    
     private let cryingEyeThreshold: CGFloat = 0.1
 
     private lazy var captureSession: AVCaptureSession = {
@@ -39,9 +40,16 @@ class ViewController: UIViewController {
     private var lastFrame: CMSampleBuffer?
 
     private let videoUsecase = VideoVisionUsecase()
+    
+    private var prevBottomPosition = NSDecimalNumber.init(value: 0.0)
+    private var bottomMouthPositionThreshould = NSDecimalNumber.init(value: 5.0)
+
+    private var isCryingMouth: Bool = false
+    private var isCryingEyes: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpCaptureSessionOutput()
         setUpCaptureSessionInput()
     }
@@ -59,7 +67,10 @@ class ViewController: UIViewController {
         
         stopSession()
     }
-    
+}
+
+// MARK: Private
+extension ViewController {
     private func startSession() {
         sessionQueue.async {
             self.captureSession.startRunning()
@@ -141,22 +152,55 @@ class ViewController: UIViewController {
             }
 
             for face in faces {
-                self?.isBabyCrying(face: face)
+                self?.inspectFacialExpression(face: face)
             }
         }
     }
     
-    private func isBabyCrying(face: VisionFace) {
+    private func inspectFacialExpression(face: VisionFace) {
+        inspectEyeExpression(face: face)
+        inspectMouthExpression(face: face)
+    }
+    
+    private func inspectEyeExpression(face: VisionFace) {
         if face.hasRightEyeOpenProbability && face.hasLeftEyeOpenProbability {
             let rightEyeOpenProb = face.rightEyeOpenProbability
             let leftEyeOpenProb = face.leftEyeOpenProbability
             
-            if (rightEyeOpenProb < cryingEyeThreshold && leftEyeOpenProb < cryingEyeThreshold) {
-                amuse()
+            if (rightEyeOpenProb < cryingEyeThreshold
+                && leftEyeOpenProb < cryingEyeThreshold) {
+                isCryingEyes = true
+                isBabyCrying()
             }
+            
         }
     }
 
+    private func inspectMouthExpression(face: VisionFace) {
+        if let currentMouthPosition = face.landmark(ofType: .mouthBottom)?.position {
+            let decimalCurrentMouthPosition = NSDecimalNumber.init(decimal: currentMouthPosition.y.decimalValue)
+            
+            var diff = decimalCurrentMouthPosition.subtracting(prevBottomPosition)
+            if diff.decimalValue < NSDecimalNumber.zero.decimalValue {
+                diff = diff.multiplying(by: NSDecimalNumber.init(value: -1))
+            }
+            if prevBottomPosition.decimalValue > NSDecimalNumber.zero.decimalValue
+                && diff.decimalValue > bottomMouthPositionThreshould.decimalValue  {
+                isCryingMouth = true
+                isBabyCrying()
+            }
+            prevBottomPosition = decimalCurrentMouthPosition
+            
+        }
+
+    }
+
+    private func isBabyCrying() {
+        if isCryingEyes && isCryingMouth {
+            amuse()
+        }
+    }
+    
     private func amuse() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let amuseViewController = storyboard.instantiateViewController(withIdentifier: "AmuseViewController") as? AmuseViewController else { return }
