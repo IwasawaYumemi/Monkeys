@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import youtube_ios_player_helper
 
 class AmuseViewController: UIViewController {
@@ -25,12 +26,19 @@ class AmuseViewController: UIViewController {
                           "showinfo" : 0
         ]
         
+        do {
+            try AVAudioSession.sharedInstance()
+            .setCategory(AVAudioSession.Category.playback,
+                         mode: AVAudioSession.Mode.spokenAudio)
+        } catch {
+        }
         player.load(withVideoId: "KH394UCULKw", playerVars: playerVars)
     }
 }
 
 extension AmuseViewController: YTPlayerViewDelegate {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        
         
         playerView.playVideo()
     }
