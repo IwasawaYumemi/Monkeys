@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>185247792124-3dqb1jvpknvb012eedl6rq7cjsufte9v.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.185247792124-3dqb1jvpknvb012eedl6rq7cjsufte9v</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBRDD5X1l4Wcy2e8fVNGm4u5I8pdFWcSb8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>185247792124</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>hogehoge.BabyDriver</string>
+	<key>PROJECT_ID</key>
+	<string>babydriver-94161</string>
+	<key>STORAGE_BUCKET</key>
+	<string>babydriver-94161.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:185247792124:ios:e2cdc31698c082c8</string>
+	<key>DATABASE_URL</key>
+	<string>https://babydriver-94161.firebaseio.com</string>
+</dict>
+</plist>

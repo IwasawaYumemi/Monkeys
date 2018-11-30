@@ -1,0 +1,6 @@
+framework module Pods_BabyDriverTests {
+  umbrella header "Pods-BabyDriverTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
