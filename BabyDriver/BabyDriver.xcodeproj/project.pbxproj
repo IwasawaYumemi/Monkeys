@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B1E416C1B5DA430D8144AD0 /* Pods_BabyDriverUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B384E6C08D3EA9332CAF6E44 /* Pods_BabyDriverUITests.framework */; };
+		4F1BAD1721B0DFFD00C6D0F0 /* VideoVisionUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1BAD1621B0DFFD00C6D0F0 /* VideoVisionUsecase.swift */; };
 		4FFCA73721B0C3A500618698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCA73621B0C3A500618698 /* AppDelegate.swift */; };
 		4FFCA73921B0C3A500618698 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCA73821B0C3A500618698 /* ViewController.swift */; };
 		4FFCA73C21B0C3A500618698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCA73A21B0C3A500618698 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		24A8E5204BB204BC5AA5BACD /* Pods-BabyDriverTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyDriverTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BabyDriverTests/Pods-BabyDriverTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4F1BAD1621B0DFFD00C6D0F0 /* VideoVisionUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoVisionUsecase.swift; sourceTree = "<group>"; };
 		4FFCA73321B0C3A500618698 /* BabyDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFCA73621B0C3A500618698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FFCA73821B0C3A500618698 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F1BAD1221B0DA9D00C6D0F0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4FFCA73821B0C3A500618698 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4F1BAD1521B0DFA400C6D0F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F1BAD1621B0DFFD00C6D0F0 /* VideoVisionUsecase.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4FFCA72A21B0C3A500618698 = {
 			isa = PBXGroup;
 			children = (
@@ -116,9 +134,10 @@
 		4FFCA73521B0C3A500618698 /* BabyDriver */ = {
 			isa = PBXGroup;
 			children = (
+				4F1BAD1521B0DFA400C6D0F0 /* Model */,
+				4F1BAD1221B0DA9D00C6D0F0 /* ViewController */,
 				4FFCA76421B0C4E700618698 /* GoogleService-Info.plist */,
 				4FFCA73621B0C3A500618698 /* AppDelegate.swift */,
-				4FFCA73821B0C3A500618698 /* ViewController.swift */,
 				4FFCA73A21B0C3A500618698 /* Main.storyboard */,
 				4FFCA73D21B0C3A700618698 /* Assets.xcassets */,
 				4FFCA73F21B0C3A700618698 /* LaunchScreen.storyboard */,
@@ -180,6 +199,7 @@
 				4FFCA73021B0C3A500618698 /* Frameworks */,
 				4FFCA73121B0C3A500618698 /* Resources */,
 				D198AF4052564B6CB4D7DFB9 /* [CP] Embed Pods Frameworks */,
+				FE9F61E157A6CF3D5DC4C3FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -361,17 +381,43 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BabyDriver/Pods-BabyDriver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BabyDriver/Pods-BabyDriver-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE9F61E157A6CF3D5DC4C3FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BabyDriver/Pods-BabyDriver-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVFaceDetectorResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMVFaceDetectorResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BabyDriver/Pods-BabyDriver-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -381,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1BAD1721B0DFFD00C6D0F0 /* VideoVisionUsecase.swift in Sources */,
 				4FFCA73921B0C3A500618698 /* ViewController.swift in Sources */,
 				4FFCA73721B0C3A500618698 /* AppDelegate.swift in Sources */,
 			);

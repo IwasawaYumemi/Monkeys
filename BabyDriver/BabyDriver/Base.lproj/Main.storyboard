@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +12,57 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BabyDriver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dIU-ee-eVu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="230" y="99"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="kZI-nQ-sjn">
+            <objects>
+                <viewController id="lv2-Er-tlj" customClass="VideoViewController" customModule="BabyDriver" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f1a-YG-44K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gat-9S-Ku1" userLabel="CameraView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KGj-s4-Si6" firstAttribute="trailing" secondItem="gat-9S-Ku1" secondAttribute="trailing" id="HqX-GN-F9D"/>
+                            <constraint firstItem="gat-9S-Ku1" firstAttribute="top" secondItem="KGj-s4-Si6" secondAttribute="top" id="I5K-Fe-smT"/>
+                            <constraint firstItem="KGj-s4-Si6" firstAttribute="bottom" secondItem="gat-9S-Ku1" secondAttribute="bottom" id="XEJ-Ba-gS8"/>
+                            <constraint firstItem="gat-9S-Ku1" firstAttribute="leading" secondItem="KGj-s4-Si6" secondAttribute="leading" id="fvO-B3-FMc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KGj-s4-Si6"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9XJ-Sm-wLa">
+                        <barButtonItem key="rightBarButtonItem" image="switch_camera" id="GS7-wX-JTX" userLabel="Switch Camera Button"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cameraView" destination="gat-9S-Ku1" id="lrC-TZ-ZPJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YaZ-Tl-LLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem image="switch_camera" id="fFl-8P-Xpt" userLabel="Switch Camera Button"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="99"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="switch_camera" width="36" height="36"/>
+    </resources>
 </document>
